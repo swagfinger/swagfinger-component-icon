@@ -1,7 +1,7 @@
 {
   "name": "@swagfinger/icon",
-  "version": "0.0.5",
-  "main": "./dist/index.js",
+  "version": "0.0.6",
+  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --config webpack.config.js",
     "build": "webpack --mode production --config webpack.config.js"
