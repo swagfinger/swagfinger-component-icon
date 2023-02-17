@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 
-export const IconContainer = styled.div`
+const IconContainer = styled.div`
   width: ${(props) => props.iconSize};
   height: ${(props) => props.iconSize};
   display: flex;
