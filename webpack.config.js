@@ -4,20 +4,25 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
   return {
-    mode: isProduction ? 'production' : 'development',
-    devServer: {
-      static: path.join(__dirname, 'dist'),
-      compress: true,
-      port: 9000,
-    },
-    entry: isProduction
-      ? './src/index.production.js'
-      : './src/index.development.js',
+    entry: './src/index.js',
+
     output: {
       library: 'Icon', // the name of the exported library
       libraryTarget: 'umd', // the format of the exported library
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.js',
+      filename: 'index.js',
+      clean: true,
+      environment: {
+        module: true,
+      },
+      library: {
+        type: 'commonjs', // output as commonjs module
+      },
+    },
+    devServer: {
+      static: path.join(__dirname, 'dist'),
+      compress: true,
+      port: 9000,
     },
     module: {
       rules: [
@@ -26,9 +31,22 @@ module.exports = (env, argv) => {
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    modules: false, // disable CommonJS output
+                  },
+                ],
+              ],
+            },
           },
         },
       ],
+    },
+    resolve: {
+      extensions: ['.js', '.jsx', '.cjs', '.mjs'],
     },
     plugins: [
       new HtmlWebpackPlugin({
