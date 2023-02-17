@@ -17,7 +17,7 @@ module.exports = (env, argv) => {
       library: 'Icon', // the name of the exported library
       libraryTarget: 'umd', // the format of the exported library
       path: path.resolve(__dirname, 'dist'),
-      filename: 'index.js',
+      filename: 'bundle.js',
     },
     module: {
       rules: [

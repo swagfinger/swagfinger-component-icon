@@ -19,10 +19,10 @@ const IconContainer = styled.div`
 `;
 
 export const Icon = ({
-  iconSize = '',
+  iconSize = '30px',
   color = '',
   className = '',
-  children = null,
+  children = undefined,
   fill = null,
   stroke = null,
 }) => {
