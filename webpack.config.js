@@ -1,10 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
   return {
     mode: isProduction ? 'production' : 'development',
+    optimization: {
+      minimize: false,
+    },
     devServer: {
       static: path.join(__dirname, 'dist'),
       compress: true,
@@ -15,7 +19,7 @@ module.exports = (env, argv) => {
       : './src/index.development.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'index.js',
+      filename: '[name].bundle.js',
       library: 'Icon',
       libraryTarget: 'umd',
     },
@@ -36,23 +40,7 @@ module.exports = (env, argv) => {
           use: [
             'style-loader', // generate the necessary code to apply styles to components
             'css-loader', // parse the CSS code
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  parser: 'postcss-js',
-                  plugins: [
-                    [
-                      'postcss-preset-env',
-                      {
-                        // Options
-                      },
-                    ],
-                  ],
-                },
-                execute: true,
-              },
-            },
+            'postcss-loader',
           ],
         },
       ],
