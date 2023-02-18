@@ -14,7 +14,7 @@ module.exports = {
     port: 9000,
   },
   resolve: {
-    extensions: ['.js', '.mjs'], // tell webpack to resolve .mjs files as ES modules
+    extensions: ['.js', 'jsx', '.mjs'], // tell webpack to resolve .mjs files as ES modules
   },
   module: {
     rules: [
@@ -23,9 +23,13 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'], // specify react preset
           },
+        },
+        resolve: {
+          fullySpecified: false,
         },
       },
       {

@@ -18,7 +18,7 @@ const IconContainer = styled.div`
   }
 `;
 
-const Icon = ({
+export const Icon = ({
   iconSize = '30px',
   color = '',
   className = '',
@@ -38,5 +38,3 @@ const Icon = ({
     </IconContainer>
   );
 };
-
-export default Icon;
