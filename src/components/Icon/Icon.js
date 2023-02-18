@@ -21,14 +21,14 @@ const IconContainer = styled.div`
 export const Icon = ({
   iconSize = '30px',
   color = 'red',
-  className = '',
-  children = undefined,
+  className = 'IconContainer',
+  children = 'icon',
   fill = null,
   stroke = null,
 }) => {
   return (
     <IconContainer
-      className='IconContainer'
+      className={className}
       iconSize={iconSize}
       color={color}
       fill={fill}
