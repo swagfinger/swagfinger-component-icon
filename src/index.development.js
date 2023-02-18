@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import { Icon } from './components/Icon';
 

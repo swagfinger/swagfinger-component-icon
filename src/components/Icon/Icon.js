@@ -12,9 +12,6 @@ const IconContainer = styled.div`
   > * {
     width: 100%;
     height: 100%;
-    fill-opacity: ${(props) => props.fill ?? '100%'};
-    fill: ${(props) => props.fill};
-    stroke: ${(props) => props.stroke};
   }
 `;
 
@@ -23,17 +20,9 @@ export const Icon = ({
   color = 'red',
   className = 'IconContainer',
   children = 'icon',
-  fill = null,
-  stroke = null,
 }) => {
   return (
-    <IconContainer
-      className={className}
-      iconSize={iconSize}
-      color={color}
-      fill={fill}
-      stroke={stroke}
-    >
+    <IconContainer className={className} iconSize={iconSize} color={color}>
       {children}
     </IconContainer>
   );
