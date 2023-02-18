@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import React from 'react';
+import styled from 'styled-components';
 
 const IconContainer = styled.div`
   width: ${(props) => props.iconSize};
@@ -20,7 +20,7 @@ const IconContainer = styled.div`
 
 export const Icon = ({
   iconSize = '30px',
-  color = '',
+  color = 'red',
   className = '',
   children = undefined,
   fill = null,
@@ -28,9 +28,9 @@ export const Icon = ({
 }) => {
   return (
     <IconContainer
+      className='IconContainer'
       iconSize={iconSize}
       color={color}
-      className={className}
       fill={fill}
       stroke={stroke}
     >
