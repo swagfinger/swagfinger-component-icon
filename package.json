@@ -1,10 +1,10 @@
 {
   "name": "@swagfinger/icon",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "",
   "type": "module",
-  "main": "index.js",
-  "module": "Icon.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --config webpack.config.cjs",
     "build": "webpack --mode production --config webpack.config.cjs"
