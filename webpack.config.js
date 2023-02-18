@@ -36,6 +36,23 @@ module.exports = (env, argv) => {
           use: [
             'style-loader', // generate the necessary code to apply styles to components
             'css-loader', // parse the CSS code
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  parser: 'postcss-js',
+                  plugins: [
+                    [
+                      'postcss-preset-env',
+                      {
+                        // Options
+                      },
+                    ],
+                  ],
+                },
+                execute: true,
+              },
+            },
           ],
         },
       ],
