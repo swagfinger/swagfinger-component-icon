@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from './Icon';
+import Icon from './Icon';
 
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 

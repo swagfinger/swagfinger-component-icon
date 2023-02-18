@@ -1,6 +1,7 @@
 import React from 'react';
 import App from './src/App';
 import { createRoot } from 'react-dom/client';
+import Icon from './src/Icon';
 
 if (process.env.NODE_ENV === 'development') {
   const container = document.getElementById('root');
@@ -8,4 +9,4 @@ if (process.env.NODE_ENV === 'development') {
   root.render(<App />);
 }
 
-export { Icon } from './src/Icon';
+export default Icon;
