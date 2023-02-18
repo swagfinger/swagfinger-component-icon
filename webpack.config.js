@@ -19,7 +19,7 @@ module.exports = (env, argv) => {
       : './src/index.development.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: '[name].bundle.js',
+      filename: 'index.js',
       library: 'Icon',
       libraryTarget: 'umd',
     },
