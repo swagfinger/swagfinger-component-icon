@@ -75,7 +75,12 @@ if (process.env.NODE_ENV === 'production') {
   config.plugins.push(new MiniCssExtractPlugin());
   config.module.rules.push({
     test: /\.css$/,
-    use: [MiniCssExtractPlugin.loader, 'css-loader'],
+    use: [
+      MiniCssExtractPlugin.loader,
+      'style-loader',
+      'css-loader',
+      'postcss-loader',
+    ],
   });
   config.externals.push({
     react: 'react',

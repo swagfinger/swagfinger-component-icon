@@ -2,16 +2,12 @@ import React from 'react';
 import '../../main.css';
 import styled from 'styled-components';
 
-// Extract the functional component
-const IconContainerInner = (props) => <div {...props} />;
+const IconContainerInner = ({ iconSize, color, ...rest }) => (
+  <div {...rest} style={{ width: iconSize, height: iconSize, color }} />
+);
 
-// Define the styled component using the extracted component
 const IconContainer = styled(IconContainerInner)`
-  width: ${(props) => props.iconSize};
-  height: ${(props) => props.iconSize};
   display: flex;
-
-  color: ${(props) => props.color};
   > * {
     width: ${(props) => props.iconSize};
     height: ${(props) => props.iconSize};

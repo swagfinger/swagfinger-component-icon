@@ -1562,37 +1562,40 @@ function v(){return(v=Object.assign||function(e){for(var t=1;t<arguments.length;
 
 ;// CONCATENATED MODULE: ./src/components/Icon/Icon.js
 var _templateObject;
+var _excluded = ["iconSize", "color"];
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 
 
-
-// Extract the functional component
-var IconContainerInner = function IconContainerInner(props) {
-  return /*#__PURE__*/react.createElement("div", props);
+var IconContainerInner = function IconContainerInner(_ref) {
+  var iconSize = _ref.iconSize,
+    color = _ref.color,
+    rest = _objectWithoutProperties(_ref, _excluded);
+  return /*#__PURE__*/react.createElement("div", _extends({}, rest, {
+    style: {
+      width: iconSize,
+      height: iconSize,
+      color: color
+    }
+  }));
 };
-
-// Define the styled component using the extracted component
-var IconContainer = styled_components_browser_esm(IconContainerInner)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  width: ", ";\n  height: ", ";\n  display: flex;\n\n  color: ", ";\n  > * {\n    width: ", ";\n    height: ", ";\n  }\n"])), function (props) {
-  return props.iconSize;
-}, function (props) {
-  return props.iconSize;
-}, function (props) {
-  return props.color;
-}, function (props) {
+var IconContainer = styled_components_browser_esm(IconContainerInner)(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n  > * {\n    width: ", ";\n    height: ", ";\n  }\n"])), function (props) {
   return props.iconSize;
 }, function (props) {
   return props.iconSize;
 });
-var Icon = function Icon(_ref) {
-  var _ref$iconSize = _ref.iconSize,
-    iconSize = _ref$iconSize === void 0 ? '30px' : _ref$iconSize,
-    _ref$color = _ref.color,
-    color = _ref$color === void 0 ? 'red' : _ref$color,
-    _ref$className = _ref.className,
-    className = _ref$className === void 0 ? 'IconContainer' : _ref$className,
-    _ref$children = _ref.children,
-    children = _ref$children === void 0 ? 'icon' : _ref$children;
+var Icon = function Icon(_ref2) {
+  var _ref2$iconSize = _ref2.iconSize,
+    iconSize = _ref2$iconSize === void 0 ? '30px' : _ref2$iconSize,
+    _ref2$color = _ref2.color,
+    color = _ref2$color === void 0 ? 'red' : _ref2$color,
+    _ref2$className = _ref2.className,
+    className = _ref2$className === void 0 ? 'IconContainer' : _ref2$className,
+    _ref2$children = _ref2.children,
+    children = _ref2$children === void 0 ? 'icon' : _ref2$children;
   return /*#__PURE__*/react.createElement(IconContainer, {
     className: className,
     iconSize: iconSize,
