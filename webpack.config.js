@@ -1,18 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+  mode: 'development',
   devServer: {
     static: path.join(__dirname, 'dist'),
     compress: false,
     port: 9000,
   },
-  entry: './src/index.js',
+  entry: {
+    index: path.resolve(__dirname, 'src/index.js'),
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',
-    library: 'Icon',
-    libraryTarget: 'umd',
+    filename: '[name].js',
   },
   module: {
     rules: [
@@ -20,11 +22,15 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: require.resolve('babel-loader'),
+          loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'], // specify react preset
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },
@@ -35,8 +41,9 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: './src/template.html',
       filename: './index.html',
     }),
+    new MiniCssExtractPlugin(),
   ],
 };
