@@ -1603,6 +1603,7 @@ var Icon = function Icon(_ref2) {
 
 ;// CONCATENATED MODULE: ./src/index.production.js
 
+
 })();
 
 /******/ 	return __webpack_exports__;

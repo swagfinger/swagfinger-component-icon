@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 
 const config = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -11,7 +10,7 @@ const config = (env, argv) => {
 
     devServer: {
       static: path.join(__dirname, 'dist'),
-      compress: true,
+      compress: false,
       port: 9000,
     },
     entry: isProduction
@@ -54,30 +53,14 @@ const config = (env, argv) => {
     ],
     optimization: {
       minimize: false,
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            compress: {
-              drop_console: true,
-            },
-          },
-        }),
-      ],
     },
   };
 };
 
 if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(new MiniCssExtractPlugin());
   config.module.rules.push({
     test: /\.css$/,
-    use: [
-      'style-loader',
-      'css-loader',
-      'postcss-loader',
-      'sass-loader',
-      MiniCssExtractPlugin.loader,
-    ],
+    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
   });
   config.externals.push({
     react: 'react',
