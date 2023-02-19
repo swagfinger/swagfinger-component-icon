@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'development',
   devServer: {
     static: path.join(__dirname, 'dist'),
     compress: false,
@@ -34,11 +33,6 @@ module.exports = {
       },
     ],
   },
-
-  performance: {
-    hints: false,
-  },
-
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/template.html',
