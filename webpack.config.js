@@ -41,6 +41,7 @@ const config = (env, argv) => {
             'style-loader', // generate the necessary code to apply styles to components
             'css-loader', // parse the CSS code
             'postcss-loader',
+            'sass-loader',
           ],
         },
       ],
@@ -76,10 +77,11 @@ if (process.env.NODE_ENV === 'production') {
   config.module.rules.push({
     test: /\.css$/,
     use: [
-      MiniCssExtractPlugin.loader,
       'style-loader',
-      'css-loader',
       'postcss-loader',
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      'sass-loader',
     ],
   });
   config.externals.push({
