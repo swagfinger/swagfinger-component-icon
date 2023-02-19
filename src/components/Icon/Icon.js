@@ -8,10 +8,6 @@ const IconContainerInner = ({ iconSize, color, ...rest }) => (
 
 const IconContainer = styled(IconContainerInner)`
   display: flex;
-  > * {
-    width: ${(props) => props.iconSize};
-    height: ${(props) => props.iconSize};
-  }
 `;
 
 export const Icon = ({
