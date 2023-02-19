@@ -1095,10 +1095,21 @@ var _templateObject;
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var IconContainer = styled_components_browser_esm.div(_templateObject || (_templateObject = _taggedTemplateLiteral([""])));
-var Icon = function Icon(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/react.createElement(IconContainer, null, children);
+var IconContainer = styled_components_browser_esm(function (_ref) {
+  var children = _ref.children,
+    color = _ref.color;
+  return /*#__PURE__*/react.createElement("div", {
+    style: {
+      color: color
+    }
+  }, children);
+})(_templateObject || (_templateObject = _taggedTemplateLiteral([""])));
+var Icon = function Icon(_ref2) {
+  var children = _ref2.children,
+    color = _ref2.color;
+  return /*#__PURE__*/react.createElement(IconContainer, {
+    color: color
+  }, children);
 };
 /* harmony default export */ const src_Icon = (Icon);
 ;// CONCATENATED MODULE: ./src/index.production.js

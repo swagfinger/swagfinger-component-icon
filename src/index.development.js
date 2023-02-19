@@ -4,4 +4,4 @@ import Icon from './Icon';
 
 const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
-root.render(<Icon>hi</Icon>);
+root.render(<Icon color='red'>hi</Icon>);
