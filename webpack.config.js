@@ -1,9 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const config = (env, argv) => {
+module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
   return {
     mode: isProduction ? 'production' : 'development',
@@ -19,6 +18,8 @@ const config = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'index.js',
+      library: 'Icon',
+      libraryTarget: 'umd',
     },
     module: {
       rules: [
@@ -54,17 +55,3 @@ const config = (env, argv) => {
     },
   };
 };
-
-if (process.env.NODE_ENV === 'production') {
-  config.module.rules.push({
-    test: /\.css$/,
-    use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-  });
-  config.externals.push({
-    react: 'react',
-    'react-dom': 'react-dom',
-    'styled-components': 'styled-components',
-  });
-}
-
-module.exports = config;

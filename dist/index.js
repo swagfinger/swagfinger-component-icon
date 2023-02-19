@@ -1,4 +1,14 @@
-/******/ (() => { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["Icon"] = factory();
+	else
+		root["Icon"] = factory();
+})(self, () => {
+return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
@@ -565,8 +575,13 @@ module.exports = styleTagTransform;
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
 
-// UNUSED EXPORTS: Icon
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "Icon": () => (/* reexport */ Icon)
+});
 
 // EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
 var injectStylesIntoStyleTag = __webpack_require__(379);
@@ -2144,7 +2159,7 @@ function murmur2(str) {
 
 /* harmony default export */ const emotion_hash_esm = (murmur2);
 
-;// CONCATENATED MODULE: ./node_modules/@emotion/serialize/node_modules/@emotion/unitless/dist/emotion-unitless.esm.js
+;// CONCATENATED MODULE: ./node_modules/@emotion/unitless/dist/emotion-unitless.esm.js
 var unitlessKeys = {
   animationIterationCount: 1,
   borderImageOutset: 1,
@@ -2940,7 +2955,7 @@ var Icon = function Icon(_ref2) {
     className = _ref2$className === void 0 ? 'IconContainer' : _ref2$className,
     _ref2$children = _ref2.children,
     children = _ref2$children === void 0 ? 'icon' : _ref2$children;
-  return /*#__PURE__*/React.createElement(IconContainer, {
+  return /*#__PURE__*/react.createElement(IconContainer, {
     className: className,
     iconSize: iconSize,
     color: color
@@ -2951,8 +2966,9 @@ var Icon = function Icon(_ref2) {
 
 ;// CONCATENATED MODULE: ./src/index.production.js
 
-
 })();
 
+/******/ 	return __webpack_exports__;
 /******/ })()
 ;
+});
