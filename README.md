@@ -1,1 +1,0 @@
-# @swagfinger/icon
