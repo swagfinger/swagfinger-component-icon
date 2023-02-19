@@ -1,14 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports = (env, argv) => {
+const config = (env, argv) => {
   const isProduction = argv.mode === 'production';
   return {
     mode: isProduction ? 'production' : 'development',
-    optimization: {
-      minimize: false,
-    },
+
     devServer: {
       static: path.join(__dirname, 'dist'),
       compress: true,
@@ -45,12 +45,43 @@ module.exports = (env, argv) => {
         },
       ],
     },
+    resolve: {
+      extensions: ['.js', '.jsx'],
+    },
     plugins: [
+      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: './index.html',
         filename: './index.html',
         inject: true,
       }),
     ],
+    optimization: {
+      minimize: false,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            compress: {
+              drop_console: true,
+            },
+          },
+        }),
+      ],
+    },
   };
 };
+
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(new MiniCssExtractPlugin());
+  config.module.rules.push({
+    test: /\.css$/,
+    use: [MiniCssExtractPlugin.loader, 'css-loader'],
+  });
+  config.externals.push({
+    react: 'react',
+    'react-dom': 'react-dom',
+    'styled-components': 'styled-components',
+  });
+}
+
+module.exports = config;
