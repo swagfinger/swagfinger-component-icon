@@ -80,11 +80,7 @@ if (process.env.NODE_ENV === 'production') {
   config.externals.push({
     react: 'react',
     'react-dom': 'react-dom',
-    'styled-components': {
-      commonjs: 'styled-components',
-      commonjs2: 'styled-components',
-      amd: 'styled-components',
-    },
+    'styled-components': 'styled-components',
   });
 }
 
