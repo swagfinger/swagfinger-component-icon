@@ -1,2 +1,2 @@
-export * from '../../main.css';
-export * from './Icon';
+import Icon from './Icon';
+export default Icon;

@@ -1,23 +1,32 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-const IconContainerInner = ({ iconSize, color, ...rest }) => (
-  <div {...rest} style={{ width: iconSize, height: iconSize, color }} />
-);
-
-const IconContainer = styled(IconContainerInner)`
+const IconContainer = styled(
+  ({ iconSize, color, className, children, ...rest }) => (
+    <div
+      className={className}
+      style={{ width: iconSize, height: iconSize, color }}
+    >
+      {children}
+    </div>
+  )
+)`
   display: flex;
 `;
 
-export const Icon = ({
-  iconSize = '30px',
-  color = 'red',
-  className = 'IconContainer',
-  children = 'icon',
-}) => {
+const Icon = (props) => {
+  const {
+    iconSize = '30px',
+    color = 'red',
+    className = 'IconContainer',
+    children = 'icon',
+  } = props;
+
   return (
     <IconContainer className={className} iconSize={iconSize} color={color}>
       {children}
     </IconContainer>
   );
 };
+
+export default Icon;

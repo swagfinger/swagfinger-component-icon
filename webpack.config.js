@@ -33,10 +33,10 @@ module.exports = (env, argv) => {
             },
           },
         },
-        {
-          test: /\.css$/, // process .css files
-          use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
-        },
+        // {
+        //   test: /\.css$/, // process .css files
+        //   use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+        // },
       ],
     },
     resolve: {
