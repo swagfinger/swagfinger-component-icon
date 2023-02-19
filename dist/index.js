@@ -1091,42 +1091,14 @@ function v(){return(v=Object.assign||function(e){for(var t=1;t<arguments.length;
 //# sourceMappingURL=styled-components.browser.esm.js.map
 
 ;// CONCATENATED MODULE: ./src/Icon/index.js
-var _excluded = ["iconSize", "color", "className", "children"];
 var _templateObject;
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var IconContainer = styled_components_browser_esm(function (_ref) {
-  var iconSize = _ref.iconSize,
-    color = _ref.color,
-    className = _ref.className,
-    children = _ref.children,
-    rest = _objectWithoutProperties(_ref, _excluded);
-  return /*#__PURE__*/react.createElement("div", {
-    className: className,
-    style: {
-      width: iconSize,
-      height: iconSize,
-      color: color
-    }
-  }, children);
-})(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  display: flex;\n"])));
-var Icon = function Icon(props) {
-  var _props$iconSize = props.iconSize,
-    iconSize = _props$iconSize === void 0 ? '30px' : _props$iconSize,
-    _props$color = props.color,
-    color = _props$color === void 0 ? 'red' : _props$color,
-    _props$className = props.className,
-    className = _props$className === void 0 ? 'IconContainer' : _props$className,
-    _props$children = props.children,
-    children = _props$children === void 0 ? 'icon' : _props$children;
-  return /*#__PURE__*/react.createElement(IconContainer, {
-    className: className,
-    iconSize: iconSize,
-    color: color
-  }, children);
+var IconContainer = styled_components_browser_esm.div(_templateObject || (_templateObject = _taggedTemplateLiteral([""])));
+var Icon = function Icon(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/react.createElement(IconContainer, null, children);
 };
 /* harmony default export */ const src_Icon = (Icon);
 ;// CONCATENATED MODULE: ./src/index.production.js
