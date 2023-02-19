@@ -8,4 +8,4 @@ if (process.env.NODE_ENV === 'development') {
   root.render(<Icon color='red'>hi</Icon>);
 }
 
-export default Icon;
+export { default as Icon } from './Icon';
