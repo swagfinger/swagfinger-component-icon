@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Icon = ({ children }) => {
+const Icon = ({ children }) => {
   return <div>hello {children}</div>;
 };
 
