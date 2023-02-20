@@ -12,7 +12,7 @@ return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 408:
+/***/ "./node_modules/react/cjs/react.production.min.js":
 /***/ ((__unused_webpack_module, exports) => {
 
 /**
@@ -45,13 +45,13 @@ exports.useTransition=function(){return U.current.useTransition()};exports.versi
 
 /***/ }),
 
-/***/ 294:
+/***/ "./node_modules/react/index.js":
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 
 if (true) {
-  module.exports = __webpack_require__(408);
+  module.exports = __webpack_require__("./node_modules/react/cjs/react.production.min.js");
 } else {}
 
 
@@ -121,12 +121,11 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "Icon": () => (/* reexport */ src_Icon),
-  "default": () => (/* binding */ index_production)
+  "Icon": () => (/* reexport */ src_Icon)
 });
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(294);
+var react = __webpack_require__("./node_modules/react/index.js");
 ;// CONCATENATED MODULE: ./src/Icon/index.js
 
 var Icon = function Icon(_ref) {
@@ -136,8 +135,6 @@ var Icon = function Icon(_ref) {
 /* harmony default export */ const src_Icon = (Icon);
 ;// CONCATENATED MODULE: ./src/index.production.mjs
 
-
-/* harmony default export */ const index_production = (src_Icon);
 })();
 
 /******/ 	return __webpack_exports__;

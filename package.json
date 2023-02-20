@@ -1,6 +1,6 @@
 {
   "name": "@swagfinger/icon",
-  "version": "0.0.98",
+  "version": "0.0.100",
   "description": "",
   "type": "module",
   "module": "./dist/index.js",
