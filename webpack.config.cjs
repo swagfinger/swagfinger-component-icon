@@ -24,12 +24,14 @@ module.exports = (env, argv) => {
         ? path.resolve(__dirname, 'src', 'Icon', 'index.js')
         : path.resolve(__dirname, 'src', 'index.development.js'),
     },
+
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].js',
       library: {
-        type: 'commonjs-static',
+        type: 'umd',
       },
+      iife: true,
     },
 
     resolve: {
