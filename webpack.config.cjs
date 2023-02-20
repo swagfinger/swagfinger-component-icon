@@ -1,13 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = (_, argv) => {
+module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
+  console.log('isProduction: ', isProduction);
   return {
     mode: isProduction ? 'production' : 'development',
+    optimization: {
+      minimize: false, //if you leave this out webpack strips out code...
+    },
     devServer: {
-      static: path.join(__dirname, 'dist'),
+      static: path.resolve(__dirname, 'dist'),
       compress: false,
       port: 9000,
     },
@@ -38,10 +41,6 @@ module.exports = (_, argv) => {
             },
           },
         },
-        {
-          test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        },
       ],
     },
     plugins: [
@@ -49,7 +48,6 @@ module.exports = (_, argv) => {
         template: path.resolve(__dirname, 'src', 'template.html'),
         filename: path.resolve(__dirname, 'dist', 'index.html'),
       }),
-      new MiniCssExtractPlugin(),
     ],
   };
 };
