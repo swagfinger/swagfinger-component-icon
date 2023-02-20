@@ -8,6 +8,8 @@ module.exports = (env, argv) => {
     mode: isProduction ? 'production' : 'development',
     optimization: {
       minimize: false, //if you leave this out webpack strips out code...
+      usedExports: false,
+      sideEffects: true,
     },
     devServer: {
       static: path.resolve(__dirname, 'dist'),
