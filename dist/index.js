@@ -111,7 +111,8 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "Icon": () => (/* reexport */ src_Icon)
+  "Icon": () => (/* reexport */ src_Icon),
+  "default": () => (/* binding */ index_production)
 });
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
@@ -125,6 +126,8 @@ var Icon = function Icon(_ref) {
 /* harmony default export */ const src_Icon = (Icon);
 ;// CONCATENATED MODULE: ./src/index.production.js
 
+
+/* harmony default export */ const index_production = (src_Icon);
 })();
 
 /******/ })()
