@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
     mode: isProduction ? 'production' : 'development',
     optimization: {
       minimize: false, //if you leave this out webpack strips out code...
-      usedExports: false,
+      usedExports: true,
       sideEffects: true,
     },
     devServer: {
@@ -40,7 +40,13 @@ module.exports = (env, argv) => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-react'],
+              presets: [
+                [
+                  '@babel/preset-env',
+                  { modules: false, bugfixes: true, loose: true },
+                ],
+                '@babel/preset-react',
+              ],
             },
           },
         },
