@@ -21,26 +21,27 @@ module.exports = (env, argv) => {
     },
     entry: {
       index: isProduction
-        ? path.resolve(__dirname, 'src', 'Icon', 'index.js')
+        ? path.resolve(__dirname, 'src', 'index.production.js')
         : path.resolve(__dirname, 'src', 'index.development.js'),
     },
-
+    experiments: {
+      outputModule: true,
+    },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: '[name].js',
+      filename: '[name].mjs',
       library: {
-        type: 'umd',
+        type: 'module',
       },
-      iife: true,
     },
 
     resolve: {
-      extensions: ['.js', '.mjs'],
+      extensions: ['.js'],
     },
     module: {
       rules: [
         {
-          test: /\.(js|mjs)$/,
+          test: /\.(js)$/,
           resolve: {
             fullySpecified: false,
           },
@@ -51,7 +52,14 @@ module.exports = (env, argv) => {
               presets: [
                 [
                   '@babel/preset-env',
-                  { modules: false, bugfixes: true, loose: true },
+                  {
+                    modules: false,
+                    bugfixes: true,
+                    loose: true,
+                    targets: {
+                      esmodules: true,
+                    },
+                  },
                 ],
                 '@babel/preset-react',
               ],
