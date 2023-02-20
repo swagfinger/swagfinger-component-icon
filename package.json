@@ -1,9 +1,8 @@
 {
   "name": "@swagfinger/icon",
-  "version": "0.0.108",
+  "version": "0.0.109",
   "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "module": "dist/index.mjs",
   "type": "module",
   "scripts": {
     "start": "webpack-dev-server --mode development --config webpack.config.cjs",
