@@ -7,7 +7,7 @@ module.exports = (env, argv) => {
   return {
     mode: isProduction ? 'production' : 'development',
     optimization: {
-      minimize: false, //if you leave this out webpack strips out code...
+      minimize: false,
       usedExports: false,
       sideEffects: false,
       moduleIds: 'named',
@@ -20,14 +20,15 @@ module.exports = (env, argv) => {
     },
     entry: {
       index: isProduction
-        ? path.resolve(__dirname, 'src', 'index.production.mjs')
-        : path.resolve(__dirname, 'src', 'index.development.mjs'),
+        ? path.resolve(__dirname, 'src', 'Icon', 'index.js')
+        : path.resolve(__dirname, 'src', 'index.development.js'),
     },
+
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].js',
-      libraryTarget: 'umd',
     },
+
     resolve: {
       extensions: ['.js', '.mjs'],
     },
