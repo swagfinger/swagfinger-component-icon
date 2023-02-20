@@ -18,20 +18,21 @@ module.exports = (env, argv) => {
     },
     entry: {
       index: isProduction
-        ? path.resolve(__dirname, 'src', 'index.production.js')
-        : path.resolve(__dirname, 'src', 'index.development.js'),
+        ? path.resolve(__dirname, 'src', 'index.production.mjs')
+        : path.resolve(__dirname, 'src', 'index.development.mjs'),
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].js',
+      libraryTarget: 'umd',
     },
     resolve: {
-      extensions: ['.js'],
+      extensions: ['.js', '.mjs'],
     },
     module: {
       rules: [
         {
-          test: /\.(js)$/,
+          test: /\.(js|mjs)$/,
           resolve: {
             fullySpecified: false,
           },

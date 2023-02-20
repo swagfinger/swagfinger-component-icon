@@ -4,6 +4,7 @@
   "description": "",
   "type": "module",
   "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --config webpack.config.cjs",
     "build": "webpack --mode production --config webpack.config.cjs"
