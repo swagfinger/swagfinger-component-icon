@@ -1,12 +1,15 @@
 {
   "name": "@swagfinger/icon",
-  "version": "0.0.109",
+  "version": "0.0.110",
   "description": "",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "type": "module",
   "scripts": {
-    "start": "webpack-dev-server --mode development --config webpack.config.cjs",
-    "build": "webpack --mode production --config webpack.config.cjs"
+    "dev-cjs": "webpack-dev-server --mode development --name cjs --config webpack.config.cjs",
+    "dev-mjs": "webpack-dev-server --mode development --name mjs --config webpack.config.cjs",
+    "prod-cjs": "webpack --mode production --name cjs --config webpack.config.cjs",
+    "prod-mjs": "webpack --mode production --name mjs --config webpack.config.cjs"
   },
   "author": "",
   "license": "ISC",

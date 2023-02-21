@@ -1,78 +1,111 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-module.exports = (env, argv) => {
-  const isProduction = argv.mode === 'production';
-  console.log('isProduction: ', isProduction);
-  return {
-    mode: isProduction ? 'production' : 'development',
-    optimization: {
-      minimize: false,
-      usedExports: false,
-      sideEffects: false,
-      moduleIds: 'named',
-      mangleExports: false,
-      removeEmptyChunks: false,
+const settings = {
+  cjs: {
+    experiments: {},
+    output: {
+      filename: '[name].cjs',
+      library: {
+        type: 'commonjs',
+      },
     },
-    devServer: {
-      static: path.resolve(__dirname, 'dist'),
-      compress: false,
-      port: 9000,
+    babelpresetenv: {
+      modules: 'commonjs',
+      bugfixes: true,
+      loose: true,
+      targets: {
+        node: 'current',
+      },
     },
-    entry: {
-      index: isProduction
-        ? path.resolve(__dirname, 'src', 'index.production.js')
-        : path.resolve(__dirname, 'src', 'index.development.js'),
-    },
+  },
+  mjs: {
     experiments: {
       outputModule: true,
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
       filename: '[name].mjs',
       library: {
         type: 'module',
       },
     },
-
-    resolve: {
-      extensions: ['.js'],
+    babelpresetenv: {
+      modules: false,
+      bugfixes: true,
+      loose: true,
+      targets: {
+        esmodules: true,
+      },
     },
-    module: {
-      rules: [
-        {
-          test: /\.(js)$/,
-          resolve: {
-            fullySpecified: false,
-          },
-          exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {
-                    modules: false,
-                    bugfixes: true,
-                    loose: true,
-                    targets: {
-                      esmodules: true,
-                    },
-                  },
-                ],
-                '@babel/preset-react',
-              ],
-            },
+  },
+};
+
+const isProduction = process.env.NODE_ENV === 'production'; //development or production
+
+const outputFormat =
+  process.argv.includes('--name') &&
+  process.argv[process.argv.indexOf('--name') + 1]; //gives mjs or cjs
+console.log('isProduction:', isProduction);
+console.log('outputFormat:', outputFormat);
+
+console.log('experiments:', settings[outputFormat].experiments);
+console.log('output:', settings[outputFormat].output);
+console.log('babelpresetenv:', settings[outputFormat].babelpresetenv);
+
+module.exports = {
+  optimization: {
+    minimize: false,
+    usedExports: false,
+    sideEffects: false,
+    moduleIds: 'named',
+    mangleExports: false,
+    removeEmptyChunks: false,
+  },
+  devServer: {
+    static: path.resolve(__dirname, 'dist'),
+    compress: false,
+    port: 9000,
+  },
+  entry: {
+    index: isProduction
+      ? path.resolve(__dirname, 'src', 'index.production.js')
+      : path.resolve(__dirname, 'src', 'index.development.js'),
+  },
+  experiments: settings[outputFormat].experiments,
+
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    scriptType: 'text/javascript',
+    ...settings[outputFormat].output,
+  },
+
+  resolve: {
+    extensions: ['.js'],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js)$/,
+        resolve: {
+          fullySpecified: false,
+        },
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', settings[outputFormat].babelpresetenv],
+              '@babel/preset-react',
+            ],
           },
         },
-      ],
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src', 'template.html'),
-        filename: path.resolve(__dirname, 'dist', 'index.html'),
-      }),
+      },
     ],
-  };
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      // filename: path.resolve(__dirname, 'dist', 'index.html'),
+      inject: true,
+      template: path.resolve(__dirname, 'src', 'template.html'),
+    }),
+  ],
 };
