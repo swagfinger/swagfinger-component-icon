@@ -20,13 +20,11 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 
 
-var _react = _interopRequireDefault(require("react"));
-var _client = require("react-dom/client");
-var _App = _interopRequireDefault(require("./App"));
+exports.__esModule = true;
+exports.Icon = void 0;
+var _Icon = _interopRequireDefault(require("./Icon"));
+exports.Icon = _Icon.default;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-const container = document.getElementById('root');
-const root = (0, _client.createRoot)(container);
-root.render( /*#__PURE__*/_react.default.createElement(_App.default, null));
 var __webpack_export_target__ = exports;
 for(var i in __webpack_exports__) __webpack_export_target__[i] = __webpack_exports__[i];
 if(__webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target__, "__esModule", { value: true });
